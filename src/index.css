@@ -319,3 +319,152 @@ a {
 .good__img {
     width: 100px;
 }
+
+.basket__title,
+.detals__title {
+    font-size: x-large;
+    color: #288d74;
+}
+
+.bucket-good {
+    display: flex;
+    gap: 200px;
+    border-top: #2a7c6f solid 1px;
+    border-bottom: #2a7c6f solid 1px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 500px !important;
+}
+
+.bucket-good__info {
+    display: flex;
+    gap: 15px;
+}
+
+.bucket-good__description {
+    display: flex;
+    flex-direction: column;
+}
+
+.bucket-good__img {
+    width: 98px;
+    height: 98px;
+    border: #288d74 solid 1px;
+    background-color: #f3efec;
+}
+.bucket-good__img img {
+    width: 94px;
+    height: 94px;
+    opacity: 0.6;
+}
+
+.bucket-good__title {
+    font-size: larger;
+    align-self: flex-start;
+    color: #288d74;
+}
+
+.bucket-good__descript {
+    display: flex;
+}
+.bucket-good__price {
+    margin: 0;
+    font-size: large;
+    color: #288d74;
+}
+
+.bucket-good__delete {
+    border: none;
+    background: none;
+    width: 15px;
+    height: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bucket-good__delete:hover {
+    background: gray;
+}
+
+.basket__goods br {
+    color: #288d74;
+    line-height: 250px;
+}
+
+.basket__path {
+    width: 500px !important;
+}
+
+.bucket-good__descript {
+    margin-top: 5px;
+    display: flex;
+    gap: 12px;
+}
+.basket__goods {
+    width: 500px;
+}
+.detals {
+    display: flex;
+    flex-direction: column;
+}
+
+.detals__sum,
+.detals__delivery {
+    display: flex;
+    gap: 30px;
+}
+
+.detals__sum {
+    border-top: 1px solid #288d74;
+}
+
+.detals__delivery__title,
+.detals__delivery__value {
+    margin: 0;
+}
+
+.detals h1 {
+    font-size: x-large;
+    color: #288d74;
+}
+
+.detals__delivery__button {
+    margin-top: 20px;
+    background-color: #2a7c6f;
+    height: 47px;
+    border: none;
+}
+
+.detals__delivery__button:hover {
+    background-color: #fffdf8;
+    border: #2a7c6f solid 2px;
+}
+
+.detals__delivery__button span {
+    color: #fffdf8;
+    font-size: larger;
+}
+
+.detals__delivery__button:hover span {
+    color: #2a7c6f;
+}
+
+.goods__dont {
+    font-size: x-large;
+    color: #288d74;
+}
+
+.orders-admin__info {
+    display: flex;
+    gap: 30px;
+}
+
+.orders-admin__info h1 {
+    font-size: x-large;
+    color: #288d74;
+}
+
+.orders-admin__item {
+    border: #288d74 solid 2px;
+}

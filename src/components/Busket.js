@@ -4,10 +4,14 @@ import { useEffect } from 'react'
 import { useState } from 'react'
 
 const Busket = ({ open }) => {
-    const [data, setData] = useState()
+    const [data, setData] = useState([])
     const styles = {
         content: {
             border: '14px solid #288d74',
+            width: '1000px',
+            display: 'flex',
+            alignItems: 'flex-start',
+            gap: '52px',
         },
     }
     const { request } = useFetch()
@@ -41,8 +45,6 @@ const Busket = ({ open }) => {
             return arrayProduct.product.map((element, index, array) => {
                 let imgPath
                 let title
-                let price = 40
-                let counter = 1
                 switch (element) {
                     case 'Water-one':
                         imgPath = '5litr.jpg'
@@ -94,7 +96,7 @@ const Busket = ({ open }) => {
 
                         break
                     case 'Culer-three':
-                        imgPath = 'kuler3.jpg'
+                        imgPath = 'kuler3.png'
                         title = 'Кулер №3'
                         break
 
@@ -104,12 +106,21 @@ const Busket = ({ open }) => {
 
                 return (
                     <>
-                        <div className="good__item">
-                            <img className="good__img" src={imgPath} alt="" />
-                            <h1 className="good__title">{title}</h1>
-                            <h1 className="good__price">{price}</h1>
-                            <h1 className="good__count">{counter}</h1>
-                            <h1 className="good__sum">{counter * price}</h1>
+                        <div className="bucket-good">
+                            <div className="bucket-good__info">
+                                <div className="bucket-good__img">
+                                    <img src={imgPath} alt="" />
+                                </div>
+
+                                <h1 className="bucket-good__title">{title}</h1>
+                            </div>
+
+                            <div className="bucket-good__descript">
+                                <h1 className="bucket-good__price">40,00 Р</h1>
+                                <button className="bucket-good__delete">
+                                    &#10006;
+                                </button>
+                            </div>
                         </div>
                     </>
                 )
@@ -117,20 +128,12 @@ const Busket = ({ open }) => {
         } else {
             return (
                 <>
-                    <h1>Нет продуктов</h1>
+                    <h1 className="goods__dont">Нет продуктов</h1>
                 </>
             )
         }
     }
-    const getAllPrice = () => {
-        if (JSON.parse(localStorage.getItem('bucket'))) {
-            return (
-                JSON.parse(localStorage.getItem('bucket')).product.length * 40
-            )
-        } else {
-            return 0
-        }
-    }
+
     const setOrder = async () => {
         const data = JSON.parse(localStorage.getItem('bucket')).product
         const user = JSON.parse(localStorage.getItem('user')).email
@@ -144,30 +147,61 @@ const Busket = ({ open }) => {
         )
         localStorage.removeItem('bucket')
     }
+
+    const getAllPrice = () => {
+        if (localStorage.getItem('bucket')) {
+            return `${
+                JSON.parse(localStorage.getItem('bucket')).product.length * 40
+            },00 Р`
+        } else {
+            return ''
+        }
+    }
     return (
         <>
             <Modal isOpen={open} style={styles}>
-                <div className="bucket">
-                    <h1 className="bucket__title">Корзина товаров</h1>
-                    <div className="bucket__goods goods">
-                        <div className="goods__titile title">
-                            <h1 className="title__head title__text">
-                                Название товара
+                <div className="basket__goods">
+                    <h1 className="basket__title">Моя корзина</h1>
+
+                    {getGoods()}
+
+                    <input
+                        className="basket__path"
+                        type="text"
+                        name=""
+                        id=""
+                        placeholder="Ваш адрес"
+                    />
+                    <input
+                        className="basket__path"
+                        type="text"
+                        name=""
+                        id=""
+                        placeholder="Пожелания"
+                    />
+                </div>
+                <div className="basket__details">
+                    <h1 className="detals__title">Детали заказа</h1>
+                    <div className="detals">
+                        <div className="detals__sum">
+                            <h1 className="detals__sum__title">Сумма</h1>
+                            <h1 className="detals__sum__value">
+                                {getAllPrice()}
                             </h1>
-                            <h1 className="title__price title__text">
-                                Стоимость
-                            </h1>
-                            <h1 className="title__amount title__text">
-                                Количество
-                            </h1>
-                            <h1 className="title__summ title__text">Cумма</h1>
                         </div>
-                        {getGoods()}
-                    </div>
-                    <div className="good__all">
-                        <h1 className="good__all-price">{getAllPrice()}</h1>
-                        <button className="gooo__order" onClick={setOrder}>
-                            Заказать
+                        <div className="detals__delivery">
+                            <h1 className="detals__delivery__title">
+                                Доставка
+                            </h1>
+                            <h1 className="detals__delivery__value">
+                                БЕСПЛАТНО
+                            </h1>
+                        </div>
+                        <button
+                            className="detals__delivery__button"
+                            onClick={setOrder}
+                        >
+                            <span>Заказать</span>
                         </button>
                     </div>
                 </div>
